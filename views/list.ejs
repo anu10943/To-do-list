@@ -1,0 +1,44 @@
+
+<%- include('header') %> 
+        <!-- use scriplet tags for each line, :for loop for while if else -->
+       <div  class="box" id="heading">
+            <h1><%=listTitle%></h1>
+       </div>
+        <div class="box">
+            <% new_items.forEach(item => {%>
+
+                <!-- here when checkbox is checked it must POST how? -->
+                <form action="/delete" method="POST">
+                    <div class="item">
+                    <input type="checkbox" value=<%=item._id%>  name="checkbox" onChange="this.form.submit()">
+                <!-- onchange bit is a js code stackoverflow -->
+                    <!-- //i need a val if checkbox is checked so as to delete it after checked
+                so wrap it in form with post method -->
+            
+                    <p> <%=item.name%></p>
+            <!--int doesnt exist use var i,array.length not array.length() -->
+                </div>
+                <input type="hidden" name="nameOfList" value=<%= listTitle %> >
+                <!-- u gave item.name thats why last item became title -->
+
+                </form>
+            <% }); %> 
+                <!-- the div being below makes items in 1 line probb -->
+            <!--so use array and passed it,but all new todo item in 1 single bullet point so do for loop//last item gets overwritten always if item="" in global -->
+                
+           <!-- //here there is a submit button which posts data to home route -->
+        <form class="item" action="/" method="POST">
+            <input type="text" name="todo" autocomplete="off" placeholder="To-do New item">
+            <button type="submit" name="button" value=<%=listTitle%> >+</button>
+            <!-- only named vars will be in req.body including button -->
+        </form>
+        </div>
+        <script src="" async defer></script>
+<%- include('footer') %> 
+<!-- only if logic should be changed here unless absolutely necessary or  faster -->
+<!-- html should only contain content
+//<%= %> is the marker replace whatever inside with a variable-->
+<!-- //check tags in ejsDOC -->
+
+<!-- //<% %> is for control flow -->
+ 
